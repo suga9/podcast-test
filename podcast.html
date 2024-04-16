@@ -1,8 +1,44 @@
 <!DOCTYPE html>
 <html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        #demo {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .podcast-item {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 300px;
+            margin-bottom: 20px;
+        }
+        .podcast-item h2 {
+            color: #333;
+            font-size: 1.2em;
+            margin-top: 0;
+        }
+        .podcast-item p {
+            color: #666;
+            margin: 10px 0;
+        }
+        .podcast-item audio {
+            width: 100%;
+            margin-top: 10px;
+        }
+    </style>
+</head>
 <body>
 
-<p id="demo"></p>
+<div id="demo"></div>
 
 <script>
 var xhttp = new XMLHttpRequest();
@@ -27,7 +63,7 @@ function myFunction(xml) {
         var pubDate = items[i].getElementsByTagName("pubDate")[0].childNodes[0].nodeValue;
         var enclosureUrl = items[i].getElementsByTagName("enclosure")[0].getAttribute("url");
 
-        output += "<div>";
+        output += "<div class='podcast-item'>";
         output += "<h2>" + title + "</h2>";
         output += "<p><strong>Author:</strong> " + author + "</p>";
         output += "<p><strong>Description:</strong> " + description + "</p>";
@@ -40,7 +76,6 @@ function myFunction(xml) {
     document.getElementById("demo").innerHTML = output;
 }
 </script>
-
 
 </body>
 </html>
